@@ -1,0 +1,7 @@
+{
+  "name": "tikfulfill-local-vercel",
+  "private": true,
+  "version": "10.0.0",
+  "scripts": {"dev":"node local-server.js", "start":"node local-server.js", "check":"node --check local-server.js && node --check sheets-api.js && node --check api/google.js"},
+  "engines":{"node":">=18"}
+}

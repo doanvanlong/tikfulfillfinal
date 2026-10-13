@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="vi"><head><link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23fe3158'/%3E%3Ctext x='32' y='45' font-size='40' fill='white' text-anchor='middle'%3ET%3C/text%3E%3C/svg%3E"><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>TikFulfill Studio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#17181b;--muted:#7c8390;--border:#e8e9ef;--accent:#fe3158;--bg:#f7f8fa;--success:#0c9660}*{box-sizing:border-box}body{margin:0;background:var(--bg);font:13px/1.5 Inter,system-ui,Arial,sans-serif;color:var(--ink)}button,input,select,textarea{font:inherit}button{cursor:pointer}button:disabled{opacity:.5;cursor:not-allowed}a{color:#345eac}header{height:62px;background:#101013;display:flex;align-items:center;padding:0 max(22px,calc((100vw - 1510px)/2));gap:38px;color:#fff;position:sticky;top:0;z-index:9}header strong{font-size:19px;letter-spacing:-.8px;white-space:nowrap}header strong span{color:var(--accent)}nav{display:flex;gap:6px;overflow-x:auto;height:100%;align-items:stretch}nav button{color:#babac2;background:transparent;border:0;padding:0 13px;white-space:nowrap;font-size:12px;font-weight:600;border-bottom:3px solid transparent}nav button.active{color:#fff;border-color:var(--accent)}.shell{max-width:1530px;margin:25px auto;padding:0 22px}.panel{border:1px solid var(--border);background:#fff;border-radius:13px;margin-bottom:17px;box-shadow:0 2px 9px #161b2610}.syncbar{padding:12px 18px;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}.syncbar .status{display:flex;align-items:center;gap:10px}.dot{width:9px;height:9px;border-radius:50%;background:#c7c9d0}.dot.ok{background:#12aa6e}.dot.bad{background:var(--accent)}.muted{font-size:11px;color:var(--muted)}h1{font-size:18px;margin:0;letter-spacing:-.65px}h2{font-size:16px;letter-spacing:-.4px;margin:0}.row{display:flex;align-items:center;gap:10px;flex-wrap:wrap}.between{justify-content:space-between}.btn{border-radius:8px;border:1px solid #dfe1e7;background:#fff;padding:9px 12px;font-weight:600;color:#2b2d34}.btn:hover{background:#f5f5f8}.btn.dark{background:#151518;color:white;border-color:#151518}.btn.pink{background:var(--accent);color:white;border-color:var(--accent)}.btn.sm{padding:5px 9px;font-size:11px}.intro{padding:21px 23px}.stats{display:grid;grid-template-columns:repeat(5,1fr);margin-top:18px;border-top:1px solid var(--border);padding-top:14px}.stat{border-right:1px solid var(--border);padding:0 21px}.stat:first-child{padding-left:0}.stat:last-child{border:0}.stat .value{font-size:22px;font-weight:700;margin-top:3px}.green{color:var(--success)}.pinktext{color:var(--accent)}.orange{color:#df8200}.filters{padding:12px 16px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}.field{border:1px solid #e1e2e8;background:#f9f9fb;border-radius:7px;padding:9px 11px;min-width:0;outline-color:#c6c6ce}.search{width:285px}.tabs{display:flex;gap:3px;background:#f3f3f7;border-radius:8px;padding:3px}.tabs button{border:0;border-radius:6px;padding:7px 10px;background:transparent;color:#5f6570;white-space:nowrap}.tabs button.active{background:#fff;color:#111;font-weight:700;box-shadow:0 1px 4px #0001}.spacer{flex:1}.tablewrap{overflow:auto}.orders{border-collapse:collapse;width:100%;min-width:1260px;font-size:11px}.orders th{background:#f1f2f5;color:#4c5260;text-align:left;padding:11px 12px;font-weight:700;white-space:nowrap}.orders td{padding:10px 12px;border-top:1px solid var(--border);vertical-align:middle}.orders tr:hover td{background:#fafafb}.orders .mini{max-width:125px}.orders input.quick{font:11px ui-monospace,monospace;padding:7px;border:1px solid #e2e3e9;background:#fafafa;border-radius:6px;width:142px}.thumb{width:43px;height:47px;border-radius:7px;object-fit:contain;background:#f5f6f8;border:1px solid #e9e9ee}.product{display:flex;align-items:center;gap:9px;min-width:210px}.product b{display:block;max-width:165px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.tiny{font-size:10px;color:#898e9d}.strong{font-weight:700}.pill{display:inline-block;padding:4px 9px;border-radius:6px;font-size:10px;font-weight:700;background:#ecf9f1;color:#088456}.pill.no{background:#faf0f2;color:#e13557}.colored{width:11px;height:11px;border-radius:2px;display:inline-block;border:1px solid #babec3;margin-right:5px}.linkline a{white-space:nowrap}.footer{display:flex;justify-content:space-between;align-items:center;padding:11px 16px;border-top:1px solid var(--border)}.layout{padding:20px}.form-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:13px}.form-grid label{display:block;font-size:11px;font-weight:600}.form-grid input,.form-grid select{width:100%;margin-top:5px}.simpletable{width:100%;border-collapse:collapse;font-size:12px}.simpletable th,.simpletable td{text-align:left;border-bottom:1px solid var(--border);padding:10px}.simpletable th{background:#f3f4f7}.empty{border:1px dashed #d5d7df;border-radius:12px;text-align:center;color:#7a7f8a;padding:55px 15px}.drawerShade{position:fixed;inset:0;background:#14182470;z-index:12;display:none}.drawerShade.show{display:block}.drawer{position:absolute;right:0;top:0;bottom:0;width:min(610px,100%);background:#fff;display:flex;flex-direction:column;box-shadow:-9px 0 40px #0002}.drawer header{position:static;height:auto;min-height:72px;padding:18px 23px;justify-content:space-between}.drawerbody{overflow:auto;padding:21px 24px;flex:1}.drawerbody label{display:block;font-weight:600;font-size:11px;margin-bottom:13px}.drawerbody input,.drawerbody select,.drawerbody textarea{width:100%;margin-top:5px}.drawerbody .double{display:grid;grid-template-columns:1fr 1fr;gap:12px}.drawerfoot{padding:17px 23px;display:flex;justify-content:flex-end;gap:9px;border-top:1px solid var(--border)}.notice{background:#fff8e5;color:#90630c;padding:10px 13px;border-radius:7px;margin:12px 0;font-size:11px}.toast{position:fixed;bottom:20px;right:20px;background:#151515;color:white;border-radius:9px;max-width:440px;padding:12px 17px;box-shadow:0 8px 25px #0003;z-index:20;display:none}.toast.show{display:block}.hide{display:none!important}@media(max-width:1000px){.stats{grid-template-columns:repeat(2,1fr);gap:15px}.stat{border:0;padding:0}.form-grid{grid-template-columns:repeat(2,1fr)}header{gap:15px}.shell{padding:0 12px}nav button{padding:0 7px}}@media(max-width:560px){.stats{grid-template-columns:repeat(2,1fr)}.search{width:100%}.form-grid{grid-template-columns:1fr}.intro{padding:15px}.stat .value{font-size:19px}.drawerbody .double{grid-template-columns:1fr}}
+
+.export-actions{display:flex;align-items:center;gap:8px;flex-wrap:wrap}.export-actions .btn{white-space:nowrap;padding:9px 11px;font-size:12px}.export-actions .dark .export-count{color:#17181b}@media(max-width:800px){.export-actions{width:100%;justify-content:flex-end}}
+/* Grouped order rows: one parent per Order ID, editable children per Line UID. */
+.group-row{background:#fff}.group-row:hover{background:#f9fafc}.item-row{background:#f7f9fc}.item-row:hover{background:#eff3f8}.item-row td{border-bottom:1px solid #e6ebf2}.group-row td{vertical-align:middle}.order-expand{background:none;border:0;padding:0;text-align:left;color:#1d2530;cursor:pointer;font-weight:700}.order-expand:hover{color:#ef3157}.item-badge{display:inline-block;border-radius:6px;padding:1px 7px;background:#edf2ff;color:#355ea0;font-size:11px}.item-row .quick{width:100%;max-width:165px}
+
+/* v13: Comfortable Orders typography, calmer row spacing */
+.orders{font-size:12.5px;line-height:1.55;min-width:1380px}
+.orders th{font-size:12px;padding:14px 13px;letter-spacing:.01em}
+.orders td{padding:16px 13px;line-height:1.5}
+.orders .tiny{font-size:11.5px;line-height:1.6}
+.orders .product{gap:12px;min-width:235px}
+.orders .product b{max-width:180px;font-size:12.5px}
+.orders .thumb{width:47px;height:51px}
+.orders input.quick{font-size:12px;padding:9px 10px;width:150px}
+.orders .pill{font-size:11px;padding:5px 10px}
+.orders .btn.sm{font-size:12px;padding:8px 11px}
+.orders .colored{width:12px;height:12px}
+.orders tr.group-row td{padding-top:19px;padding-bottom:19px;background:#fcfcfd}
+.orders tr.item-row td{padding-top:15px;padding-bottom:15px}
+.orders .item-badge{font-size:11px;padding:3px 8px}
+.orders .order-expand{font-size:12.5px}
+.export-count{display:inline-flex;min-width:20px;height:20px;padding:0 5px;border-radius:12px;margin-left:6px;align-items:center;justify-content:center;background:#fff;color:#e72c55;font-size:11px;font-weight:800}
+.orders input[type=checkbox]{width:15px;height:15px;accent-color:#fe3158}
+.orders input[type=checkbox]:disabled{opacity:.3;cursor:not-allowed}
+@media(max-width:1000px){.orders{min-width:1380px}}
+/* v14 — a single comfortable product column with editable per-item print placement */
+.orders{min-width:1130px;font-size:12.5px}
+.orders .product{min-width:310px;align-items:flex-start;gap:12px}
+.orders .product-details{min-width:0;max-width:300px;flex:1}
+.orders .product b{font-size:12.5px;max-width:270px}
+.orders .variation-text{display:flex;align-items:center;gap:3px;margin-top:5px;font-size:12px}
+.orders .sku-line{color:#657086;font-size:11.5px;line-height:1.8;overflow-wrap:anywhere}
+.orders .placement-line{display:flex;align-items:center;gap:9px;margin-top:6px;font-size:11.5px;color:#72798a}
+.orders .placement-select{max-width:145px;width:auto;background:#f8f9fc;border:1px solid #dce0e9;border-radius:6px;color:#222632;padding:5px 24px 5px 8px;font-size:11.5px;font-weight:650;cursor:pointer}
+.orders .placement-select:focus{outline:2px solid #ffd3dc;outline-offset:1px}
+.orders .placement-select:disabled{opacity:.5}
+.orders .item-row .product{padding-left:5px}
+.orders th:nth-child(4){min-width:315px}
+@media(max-width:1000px){.orders{min-width:1130px}}
+.cost-input{width:76px;max-width:100%;min-height:28px;padding:4px 7px;border:1px solid #dce1e8;border-radius:7px;background:#fff;font:inherit;font-size:12px;color:#222}.cost-input:focus{outline:2px solid #ffd0dc;border-color:#fb315e}.group-profit{margin-top:5px;font-size:12px;font-weight:600}.group-profit.green{color:#11945a}.config-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}.config-panel{padding:18px;border:1px solid var(--border);background:#fbfbfd;border-radius:10px}.config-title{font-weight:800;font-size:14px}.config-panel textarea{display:block;width:100%;min-height:205px;margin:12px 0;font-size:13px;line-height:1.75;resize:vertical}.config-panel p{margin:8px 0}@media(max-width:650px){.config-grid{grid-template-columns:1fr}}
+
+/* v22: unified shell and TikTok-inspired compact form action */
+#configPage{width:100%;max-width:100%;min-width:0}
+#configPage .panel,#configPage .layout,#configPage form{min-width:0;max-width:100%}
+#configPage .config-grid{grid-template-columns:repeat(2,minmax(0,1fr));width:100%}
+#configPage .config-panel{min-width:0;overflow:hidden}
+#configPage .config-panel textarea{min-width:0;max-width:100%;width:100%;box-sizing:border-box}
+#configPage .row{max-width:100%}
+#designForm .design-form-actions{grid-column:1/-1;display:flex;justify-content:flex-start;align-items:center;margin-top:1px}
+#designForm .design-save-btn{display:inline-flex;align-items:center;justify-content:center;gap:5px;min-width:0;width:auto;min-height:34px;padding:7px 14px;font-size:12px;font-weight:650;border-radius:7px;white-space:nowrap;transition:background .15s ease,transform .15s ease}
+#designForm .design-save-btn:hover{background:#2b2b2f;border-color:#2b2b2f}
+#designForm .design-save-btn:active{transform:translateY(1px)}
+#designForm .save-icon{font-size:15px;line-height:1}
+@media(max-width:650px){#configPage .config-grid{grid-template-columns:minmax(0,1fr)}#configPage .layout{padding:14px}}
+
+/* v23 – balanced tables, scoped to Orders and DesignLibrary */
+.orders{width:100%;min-width:1270px;table-layout:fixed;font-size:12.5px}
+.orders th,.orders td{padding-left:10px;padding-right:10px;overflow-wrap:break-word}
+.orders th:nth-child(1){width:3%}.orders th:nth-child(2){width:4%}
+.orders th:nth-child(3){width:15%}.orders th:nth-child(4){width:27%;min-width:0}
+.orders th:nth-child(5){width:13%}.orders th:nth-child(6){width:12%}
+.orders th:nth-child(7){width:12%}.orders th:nth-child(8){width:6%}.orders th:nth-child(9){width:8%}
+.orders td:nth-child(3) b,.orders .order-expand b{overflow-wrap:anywhere}
+.orders .product{min-width:0;max-width:100%;gap:10px;align-items:flex-start}
+.orders .product-details{min-width:0;max-width:none;flex:1}
+.orders .product b{max-width:100%;font-size:12.5px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.orders .thumb{width:46px;height:49px;flex:none}
+.orders input.quick{width:100%;max-width:150px;min-width:0}
+.orders .placement-line{flex-wrap:wrap;gap:6px}
+.orders .placement-select{max-width:145px}
+.orders td:nth-child(6){font-size:12px}
+.orders td:nth-child(7) .tiny{margin-top:3px}
+.orders td:nth-child(9) .btn{max-width:100%;white-space:normal}
+#designPage .panel.tablewrap{overflow-x:auto}
+#designPage .simpletable{table-layout:fixed;min-width:1040px;width:100%;font-size:12px}
+#designPage .simpletable th,#designPage .simpletable td{padding:11px 10px;vertical-align:middle;overflow-wrap:anywhere}
+#designPage .simpletable th:nth-child(1){width:13%}
+#designPage .simpletable th:nth-child(2){width:19%}
+#designPage .simpletable th:nth-child(3){width:6%}
+#designPage .simpletable th:nth-child(4),#designPage .simpletable th:nth-child(5),#designPage .simpletable th:nth-child(6),#designPage .simpletable th:nth-child(7){width:10%}
+#designPage .simpletable th:nth-child(8){width:8%}
+#designPage .simpletable th:nth-child(9){width:14%}
+.design-product-name{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;line-clamp:2;overflow:hidden;line-height:1.55;word-break:break-word}
+.design-row-actions{display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+.design-edit-btn{background:#16171b;color:#fff;border-color:#16171b}
+.design-edit-btn:hover{background:#34353a;color:#fff}
+.design-delete-btn{color:#777;background:#fff}
+#designForm .readonly{background:#eef1f7;color:#586075}
+#designForm .design-form-actions{gap:10px;flex-wrap:wrap}
+@media(max-width:760px){.orders{min-width:1270px}#designPage .simpletable{min-width:1040px}}
+
+/* v24: readable thumbnails, strict group-row text bounds, and interactive shirt preview */
+.orders .thumb{width:70px;height:78px;object-fit:contain;flex:0 0 70px;background:#f9fafb}
+.orders .product{display:flex;align-items:flex-start;min-width:0;max-width:100%;gap:12px}
+.orders .product-details{min-width:0;flex:1;max-width:100%;overflow:hidden}
+.orders .product-details>b,.orders .group-product-name{display:block;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;min-width:0;font-size:12.5px}
+.orders .group-row td:nth-child(4){min-width:0;overflow:hidden}
+.orders .group-row td:nth-child(4) .product{width:100%;max-width:100%;min-width:0}
+.orders .group-row td:nth-child(4) .product-details{width:0;flex:1 1 0;min-width:0;max-width:100%;overflow:hidden}
+.orders .group-row td:nth-child(4) .group-product-name{width:100%}
+.design-status-actions{display:flex;align-items:center;flex-wrap:wrap;gap:7px;margin-top:5px}
+.preview-action{font-size:11px;line-height:1.2;background:#fff;border:1px solid #e3e5eb;color:#363942;border-radius:6px;padding:5px 8px;font-weight:650;white-space:nowrap}
+.preview-action:hover{color:#fe3158;border-color:#fec9d4;background:#fff7f9}
+.preview-shade{position:fixed;inset:0;z-index:30;background:rgba(21,25,34,.65);display:none;align-items:center;justify-content:center;padding:22px}
+.preview-shade.show{display:flex}
+.preview-modal{width:min(830px,100%);max-height:calc(100vh - 40px);overflow:auto;background:#fff;border-radius:16px;box-shadow:0 22px 70px #0005}
+.preview-header{display:flex;align-items:center;justify-content:space-between;gap:15px;padding:17px 20px;border-bottom:1px solid #e8eaf0}
+.preview-header h2{font-size:17px}
+.preview-layout{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(280px,.72fr);gap:20px;padding:20px}
+.preview-stage{position:relative;min-height:380px;border-radius:12px;background:radial-gradient(ellipse at center,#fff 10%,#eff1f5 100%);display:flex;align-items:center;justify-content:center;overflow:hidden}
+.preview-shirt{position:relative;width:min(96%,410px);aspect-ratio:1;display:flex;align-items:center;justify-content:center}
+.preview-shirt svg{width:100%;height:100%;filter:drop-shadow(0px 9px 10px #0002)}
+.preview-art{position:absolute;top:33%;left:38%;width:24%;height:31%;object-fit:contain;filter:contrast(1.05);pointer-events:none}
+.preview-art.hidden{display:none}
+.preview-info{display:flex;flex-direction:column;gap:12px;min-width:0}
+.preview-tabs{display:flex;gap:7px}
+.preview-tabs .btn.active{background:#151518;color:#fff;border-color:#151518}
+.preview-meta{font-size:12px;color:#727784;line-height:1.6;overflow-wrap:anywhere}
+.preview-meta b{color:#252832}
+.preview-hint{background:#f7f8fa;border:1px solid #eceef3;border-radius:9px;padding:10px;font-size:11px;color:#6b707c}
+.preview-missing{position:absolute;bottom:16px;background:#fff;border:1px solid #e2e5eb;box-shadow:0 4px 14px #0001;padding:8px 12px;border-radius:8px;color:#ac5c0d;font-size:12px;max-width:90%;text-align:center}
+@media(max-width:720px){.preview-layout{grid-template-columns:1fr}.preview-stage{min-height:320px}.orders .thumb{width:64px;height:70px;flex-basis:64px}}
+
+/* v25 preview: single printable surface or independent front/back side-by-side */
+.preview-modal{width:min(1070px,100%)}
+.preview-layout{grid-template-columns:minmax(0,1.75fr) minmax(220px,.65fr);gap:18px}
+.preview-canvas{display:grid;grid-template-columns:1fr;gap:14px;align-items:start;min-width:0}
+.preview-canvas.is-double{grid-template-columns:repeat(2,minmax(0,1fr))}
+.preview-face{min-width:0;border:1px solid #eaecf0;border-radius:12px;padding:10px;position:relative;overflow:hidden}
+.preview-face-title{text-align:center;font-weight:700;font-size:12px;padding-bottom:8px;color:#333842}
+.preview-face .preview-shirt{width:100%;min-height:520px;display:flex;align-items:center;justify-content:center;position:relative;border-radius:10px;overflow:hidden;background:transparent}
+.preview-face .preview-art{position:relative;display:block;max-width:96%;max-height:460px;width:auto;height:auto;object-fit:contain;object-position:center center;filter:drop-shadow(0 8px 18px rgba(0,0,0,.14));image-rendering:auto}
+.preview-face.is-front .preview-art{transform:scale(1.78);transform-origin:center center}
+.preview-face .preview-missing{position:static;max-width:100%;box-shadow:none;margin:10px auto 0;display:block;background:#ffffffc9}
+.preview-chip{display:inline-flex;gap:5px;align-items:center;background:#fff;border-radius:6px;padding:5px 9px;font-size:11px;color:#566070;margin-top:7px;box-shadow:0 1px 0 rgba(0,0,0,.05)}
+.preview-chip i{display:inline-block;width:12px;height:12px;border-radius:3px;border:1px solid #0002}
+.preview-tabs{display:none}
+@media(max-width:750px){.preview-layout{grid-template-columns:1fr}.preview-canvas.is-double{grid-template-columns:1fr 1fr;gap:7px}.preview-face{padding:7px}.preview-face-title{font-size:11px}.preview-face .preview-shirt{min-height:280px}.preview-face .preview-art{max-height:240px;max-width:94%}}
+
+/* v33: Preview is a contained, responsive image viewer (no scale overflow). */
+.preview-shade{padding:16px;overflow:hidden}
+.preview-modal{width:min(1100px,100%);max-width:100%;max-height:calc(100dvh - 32px);overflow-y:auto;overflow-x:hidden;box-sizing:border-box}
+.preview-layout{display:grid;grid-template-columns:minmax(0,1.65fr) minmax(0,.72fr);gap:16px;min-width:0;padding:18px;align-items:start}
+.preview-canvas,.preview-info,.preview-face,.preview-mockup-card,.preview-links-card{min-width:0;max-width:100%;box-sizing:border-box}
+.preview-canvas.is-double{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}
+.preview-face{display:flex;flex-direction:column;padding:10px;min-height:0;overflow:hidden;border-radius:12px}
+.preview-face .preview-shirt{width:100%;height:clamp(260px,48vh,480px);min-height:0;aspect-ratio:auto;position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden;box-sizing:border-box}
+.preview-face .preview-art,.preview-face.is-front .preview-art,.preview-face.is-back .preview-art{position:static;top:auto;left:auto;transform:none!important;transform-origin:center;display:block;width:auto!important;height:auto!important;max-width:94%!important;max-height:94%!important;object-fit:contain;flex-shrink:1;filter:drop-shadow(0 2px 5px #0002)}
+.preview-face .preview-art.is-hidden{visibility:hidden}
+.preview-face .preview-art:not(.is-hidden){visibility:visible}
+.preview-mockup-card{padding:12px;border:1px solid #e8eaf0;border-radius:12px;background:white;margin-bottom:12px}
+.preview-mockup-title{font-size:13px;font-weight:700;margin-bottom:10px}
+.preview-mockup-frame{width:100%;height:clamp(190px,36vh,380px);overflow:hidden;display:flex;justify-content:center;align-items:center;background:#f7f8fb;border:1px solid #e8eaf0;border-radius:10px;box-sizing:border-box}
+.preview-mockup-frame img{display:block;max-width:100%;max-height:100%;width:100%;height:100%;object-fit:contain}
+.preview-mockup-empty{font-size:12px;color:#8790a0;text-align:center;padding:15px}
+.preview-links-card{padding:12px;border:1px solid #e8eaf0;border-radius:12px;background:#fff;overflow-wrap:anywhere}
+.preview-links-card>b{display:block;margin-bottom:9px}
+.preview-link-line{font-size:12px;margin-bottom:7px}
+.preview-hint{margin-top:10px}
+@media(max-width:760px){.preview-layout{grid-template-columns:minmax(0,1fr);padding:12px}.preview-canvas.is-double{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.preview-face .preview-shirt{height:clamp(200px,34vh,340px)}.preview-mockup-frame{height:230px}.preview-shade{padding:8px}.preview-modal{max-height:calc(100dvh - 16px)}}
+@media(max-width:450px){.preview-canvas.is-double{grid-template-columns:1fr}.preview-face .preview-shirt{height:300px}}
+
+</style></head><body>
+<header><strong>TikFulfill<span> Studio</span></strong><nav id="nav"><button data-view="orders" class="active">Đơn hàng</button><button data-view="pending">Cần Fulfill</button><button data-view="variants">Bảng mã Variant</button><button data-view="designs">Thư viện Design</button><button data-view="history">Lịch sử Xuất Excel</button><button data-view="config">Cấu hình</button></nav><div class="spacer"></div></header>
+<main class="shell"><section class="panel syncbar"><div class="status"><i id="dot" class="dot"></i><div><div class="strong" id="syncState">Đang kết nối Google Sheets...</div><div class="muted" id="syncInfo">Tự đồng bộ Google Sheets mỗi 30 giây · localhost / Vercel</div></div></div><div class="row"><input class="field" id="accessKey" type="password" autocomplete="off" placeholder="Mã truy cập website" style="width:190px"><button class="btn sm dark" id="loginGoogle">Kết nối</button><button class="btn sm" id="reload">↻ Đồng bộ</button><a id="sheetLink" target="_blank" rel="noopener" class="btn sm hide">Google Sheets ↗</a></div></section>
+<section class="panel intro"><div class="row between"><div><div class="muted">Orders · Fulfillment POD · Google Sheets hai chiều</div><h1>Quản lý Đơn Hàng TikTok Shop & Fulfillment POD</h1></div><div class="row"></div></div><div class="stats"><div class="stat"><div class="muted">Tổng đơn hàng</div><div class="value" id="total">0</div></div><div class="stat"><div class="muted">Đã Fulfill · Cột N = TRUE</div><div class="value green" id="done">0</div></div><div class="stat"><div class="muted">Cần Fulfill</div><div class="value orange" id="pending">0</div></div><div class="stat"><div class="muted">Tổng Payout · Cột K</div><div class="value" id="payout">$0</div></div><div class="stat"><div class="muted">Lợi nhuận (FF TRUE · có chi phí)</div><div class="value pinktext" id="profit">—</div></div></div></section>
+<div id="orderPage"><section class="panel filters"><input class="field search" id="search" placeholder="⌕  Order ID, sản phẩm, SKU, màu, variant..."><div class="tabs" id="filterTabs"><button data-filter="all" class="active">Tất cả</button><button data-filter="done">TRUE</button><button data-filter="pending">Chờ Fulfill</button><button data-filter="missing">Thiếu Variant / Design</button></div><select class="field" id="shopFilter"><option value="">Tất cả Shop</option></select><select class="field" id="sideFilter"><option value="">1 Mặt & 2 Mặt</option><option value="1M">1 Mặt</option><option value="2M">2 Mặt</option></select><div class="spacer"></div><div id="exportActions" class="export-actions hide"><button class="btn pink" id="exportFS" title="Xuất các items FALSE được chọn theo mẫu FS">↧ Excel FS <span class="export-count" data-export-count>0</span></button><button class="btn dark" id="exportPressify" title="Xuất CSV đúng 22 cột theo file mẫu Pressify">↧ CSV Pressify <span class="export-count" data-export-count>0</span></button></div><button class="btn sm" id="bulkDone">✓ Đánh dấu TRUE</button><button class="btn sm" id="bulkPending">↺ FALSE</button></section><section class="panel"><div class="tablewrap"><table class="orders"><thead><tr><th><input id="checkAll" type="checkbox"></th><th>STT</th><th>Order ID · Ngày · Shop</th><th>Sản phẩm · Variation · SKU · Mặt in</th><th>Variant ID (Sửa nhanh)</th><th>Design Front / Back</th><th>Label · Giá</th><th>FF</th><th>Thao tác</th></tr></thead><tbody id="orderRows"></tbody></table></div><div class="footer"><span class="muted" id="countLabel">0 đơn</span><div class="row"><button class="btn sm" id="prev">← Trước</button><span class="muted" id="pageLabel">1/1</span><button class="btn sm" id="next">Sau →</button></div></div></section></div>
+<section id="variantPage" class="hide"><div class="row between" style="margin:15px 0"><div><h2>Bảng Quy Đổi Mã Variant ID Nhà In</h2><div class="muted">Tự động áp dụng chính xác theo Nhà in + Dòng áo + Màu + Size.</div></div></div><div class="panel layout"><form id="variantForm" class="form-grid"><label>Nhà in<input class="field" name="Brand" placeholder="Merchize" required></label><label>Dòng áo<input class="field" name="Product Type" placeholder="T-Shirt" required></label><label>Màu sắc<input class="field" name="Color" placeholder="Black" required></label><label>Size<input class="field" name="Size" placeholder="L" required></label><label>Variant ID<input class="field" name="Variant ID" placeholder="MZ-G5000-BLK-L" required></label><label>Base Cost ($)<input class="field" type="number" name="Base Cost" step="0.01" min="0" placeholder="6.45"></label><button class="btn dark" type="submit">+ Lưu mã Variant</button></form></div><div class="panel tablewrap"><table class="simpletable"><thead><tr><th>Nhà in</th><th>Dòng áo</th><th>Màu</th><th>Size</th><th>Variant ID</th><th>Base Cost</th><th>Thao tác</th></tr></thead><tbody id="variantRows"></tbody></table></div></section>
+<section id="designPage" class="hide"><div style="margin:15px 0"><h2>Thư Viện File In Theo Mã SKU</h2><div class="muted">Mỗi SKU có thể lưu 4 link thiết kế: Front Light, Back Light, Front Dark, Back Dark. Web sẽ tự map theo màu áo và mặt in.</div><div class="notice" style="margin-top:10px"><b>Config mặc định Light:</b> Ash, White, Sport Grey, Light Blue, Light Pink, Sand · <b>Dark:</b> Black, Navy, Dark Heather, Dark Chocolate, Military Green, Forest Green</div></div><div class="panel layout"><form id="designForm" class="form-grid"><label>SKU<input class="field" name="SKU" required placeholder="T_20382627295_1M"></label><label>Tên sản phẩm<input class="field" name="Product Name" placeholder="Dachshund Dad Club"></label><label>Số mặt in<select class="field" name="Print Sides"><option value="1M">1 mặt</option><option value="2M">2 mặt</option></select></label><label>Design Front Light URL<input class="field" name="Design Front Light" placeholder="https://drive.google.com/..."></label><label>Design Back Light URL<input class="field" name="Design Back Light" placeholder="https://drive.google.com/..."></label><label>Design Front Dark URL<input class="field" name="Design Front Dark" placeholder="https://drive.google.com/..."></label><label>Design Back Dark URL<input class="field" name="Design Back Dark" placeholder="https://drive.google.com/..."></label><label>Mockup URL<input class="field" name="Mockup Link" placeholder="https://..."></label><div class="design-form-actions"><button class="btn dark design-save-btn" id="designSave" type="submit"><span class="save-icon">＋</span><span id="designSaveText">Lưu Design</span></button><button class="btn sm hide" type="button" id="designCancel">Hủy sửa</button><span class="muted hide" id="designEditingNote">Đang chỉnh sửa bản ghi hiện có</span></div></form></div><div class="panel tablewrap"><table class="simpletable"><thead><tr><th>SKU</th><th>Sản phẩm</th><th>Mặt in</th><th>Front Light</th><th>Back Light</th><th>Front Dark</th><th>Back Dark</th><th>Mockup</th><th>Thao tác</th></tr></thead><tbody id="designRows"></tbody></table></div></section>
+<section id="historyPage" class="hide"><div class="panel layout"><div class="row between"><div><h2>Lịch Sử Xuất File Excel Fulfillment</h2><div class="muted">Ghi nhận ngày giờ, tên file và số lượng đơn đã xuất.</div></div></div><div id="historyRows" style="margin-top:18px"></div></div></section>
+<section id="configPage" class="hide"><div style="margin:15px 0"><h2>Cấu hình màu áo · Design Mapping</h2><div class="muted">Nhập Tên màu-#HEX trên mỗi dòng. Ghép màu không phân biệt chữ hoa/thường nhưng vẫn phân biệt dấu cách bên trong.</div></div><div class="panel layout"><form id="colorConfigForm"><div class="config-grid"><div class="config-panel"><div class="config-title">☀️ Màu Light</div><p class="muted">Mỗi dòng: Tên màu-#HEX, ví dụ Ash-#c8c8c8. Dùng thiết kế Light.</p><textarea id="lightColors" class="field" rows="9" spellcheck="false" required></textarea><div id="lightCount" class="muted"></div></div><div class="config-panel"><div class="config-title">🌙 Màu Dark</div><p class="muted">Mỗi dòng: Tên màu-#HEX, ví dụ Black-#202125. Dùng thiết kế Dark.</p><textarea id="darkColors" class="field" rows="9" spellcheck="false" required></textarea><div id="darkCount" class="muted"></div></div></div><div class="row" style="margin-top:16px"><button class="btn dark" id="saveColorConfig" type="submit">Lưu cấu hình → Google Sheets</button><button class="btn" id="resetColorConfig" type="button">Khôi phục màu mặc định</button><span class="muted" id="configUpdated"></span></div></form></div><div class="panel layout"><h2>Kiểm tra màu</h2><div class="row" style="margin-top:12px"><input id="testColor" class="field" placeholder="Ví dụ: navy, Ash, Light Blue" style="width:300px"><span id="testTone" class="muted">Nhập màu để kiểm tra nhóm Design.</span></div><div class="notice">Màu không có trong Light hoặc Dark sẽ không được auto-map Design. Hệ thống không lấy nhầm link của nhóm màu còn lại.</div></div></section>
+</main>
+<div id="drawerShade" class="drawerShade"><div class="drawer"><header><div><div class="muted" style="color:#bbb">Chi tiết & xử lý đơn hàng</div><h2 style="color:white" id="drawerTitle">Fulfillment</h2></div><button id="closeDrawer" class="btn sm">✕ Đóng</button></header><div class="drawerbody"><div id="drawerSummary" class="notice"></div><form id="fulfillForm"><div class="double"><label>Variant ID *<input class="field" name="Variant ID" required></label><label>Trạng thái<select class="field" name="Status"><option value="Pending">Pending</option><option value="Ready">Ready</option><option value="Fulfilled">Fulfilled</option></select></label></div><div class="double"><label>Quantity *<input class="field" type="number" name="Quantity" min="1" required></label><label>Mockup Link<input class="field" name="Mockup Link" placeholder="https://..."></label></div><label>Mặt in của item *<select class="field" name="Print Placement" id="drawerPlacement"><option value="Front">Front (Mặt trước)</option><option value="Back">Back (Mặt sau)</option><option value="Front+Back">Front + Back (Cả hai mặt)</option></select></label><label id="drawerFrontWrap"><span id="drawerFrontLabel">Design Front URL</span><input class="field" name="Design Front" placeholder="https://..."></label><label id="drawerBackWrap"><span id="drawerBackLabel">Design Back URL</span><input class="field" name="Design Back" placeholder="https://..."></label><label>Label PDF URL<input class="field" name="Label Link" placeholder="https://drive.google.com/..."></label><label>FF Price ($) <input class="field" type="number" name="FF Price" min="0" step="0.01" placeholder="Nhập chi phí Fulfillment"></label><label>Ghi chú<textarea class="field" name="Notes" rows="3"></textarea></label><label class="row" style="font-size:12px"><input id="markAsDone" type="checkbox" style="width:auto;margin:0"> Cập nhật cột N = TRUE khi lưu (yêu cầu đủ Variant, Design và Label)</label></form><div class="notice">Mặt in lưu trực tiếp tại Orders!G cho từng Line UID. Quantity, Label và trạng thái TRUE/FALSE cũng cập nhật trên tab Orders.</div></div><div class="drawerfoot"><button class="btn" id="cancelDrawer">Hủy</button><button class="btn pink" id="saveFulfill">Lưu Fulfillment → Google Sheets</button></div></div></div>
+<div class="preview-shade" id="previewShade" role="dialog" aria-modal="true" aria-labelledby="previewTitle"><div class="preview-modal"><div class="preview-header"><div><h2 id="previewTitle">Preview Design trên áo</h2><div class="muted" id="previewSubtitle">Màu áo · SKU</div></div><button type="button" id="closePreview" class="btn sm">✕ Đóng</button></div><div class="preview-layout"><div class="preview-canvas" id="previewCanvas"></div><div class="preview-info"><div class="preview-mockup-card"><div class="preview-mockup-title">Ảnh mockup</div><div class="preview-mockup-frame" id="previewMockupFrame"><img id="previewMockupImage" alt="Mockup" onerror="this.style.display='none';document.getElementById('previewMockupEmpty').style.display='block'"><div class="preview-mockup-empty" id="previewMockupEmpty" style="display:none">Chưa có ảnh mockup cho đơn này.</div></div></div><div class="preview-links-card"><b>Design URL</b><div id="previewLink">—</div><div class="preview-hint">Đây là bản ghép thử nhanh theo màu áo đã chọn. Ảnh design nên có nền trong suốt (PNG/WebP). Nếu ảnh có nhiều khoảng trống, hệ thống sẽ cố gắng cắt bớt để preview rõ hơn.</div><div class="preview-hint" id="previewImageWarning" style="display:none">Không thể hiển thị ảnh trực tiếp từ đường link này. Hãy dùng đường dẫn ảnh công khai trực tiếp (PNG, JPG, WebP). Link Google Drive dạng trang xem có thể chặn hiển thị ảnh.</div></div></div></div></div></div>
+<div id="toast" class="toast"></div><script src="https://cdn.sheetjs.com/xlsx-0.20.3/package/dist/xlsx.full.min.js"></script><script src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js"></script>
+<script src="./sheets-api.js"></script>
+<script>
+(()=>{'use strict';
+const $=id=>document.getElementById(id),esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])),api=(method,...args)=>window.TikSheets.api(method,...args);
+let D={orders:[],fulfills:[],variants:[],designs:[],exports:[],config:{}},view='orders',filter='all',page=0,selected=new Set(),busy=false,drawer=null,lastSync=0,queued=false,expanded=new Set();const limit=25;
+function toast(msg,err=false){const t=$('toast');t.textContent=msg;t.style.background=err?'#bd2445':'#191b20';t.classList.add('show');clearTimeout(t._timer);t._timer=setTimeout(()=>t.classList.remove('show'),4500)}
+function status(label,kind='',detail=''){ $('syncState').textContent=label;$('dot').className='dot '+kind;$('syncInfo').textContent=detail||'Google Sheets API · Tự động dùng refresh token trên server';}
+const DEFAULT_COLORS={light:['Ash-#c8c8c8','White-#ffffff','Sport Grey-#b6b7b9','Light Blue-#b5d5e7','Light Pink-#f4c4d2','Sand-#d7cbb9'],dark:['Black-#202125','Navy-#263651','Dark Heather-#4e4e56','Dark Chocolate-#43332c','Military Green-#626a4c','Forest Green-#294f3c']};
+function parseColorEntry(entry){const match=String(entry||'').trim().match(/^(.*?)(?:\s*-\s*(#[0-9a-fA-F]{3}(?:[0-9a-fA-F]{3})?))?$/);return {name:match?.[1]?.trim()||'',hex:match?.[2]||''}}
+function colorEntry(color){const k=normText(color);for(const tone of ['light','dark']){const entry=(configColors()[tone]||[]).find(x=>normText(parseColorEntry(x).name)===k);if(entry)return {...parseColorEntry(entry),tone}}return null}
+function colorHex(color){return colorEntry(color)?.hex||''}
+
+function configColors(){return D.config?.light&&D.config?.dark?D.config:DEFAULT_COLORS}
+function normText(v){return String(v||'').trim().toLowerCase()}
+function colorTone(color){return colorEntry(color)?.tone||''}
+function orderColor(o){return String(o.variation||'').split(',').map(x=>x.trim())[0]||''}
+function pickDesignLink(d,side,tone){if(!tone)return '';const toneName=tone==='light'?'Light':'Dark';return String(d?.[`Design ${side} ${toneName}`]||'').trim()}
+function mappedDesign(d,o,placement){const tone=colorTone(orderColor(o));const plc=placement||normalizePlacement(o.placement,o);const front=pickDesignLink(d,'Front',tone);const back=pickDesignLink(d,'Back',tone);return {front:plc==='Back'?'':front,back:plc==='Front'?'':back,mockup:String(d?.['Mockup Link']||'').trim(),tone}}
+function merged(o){const f=D.fulfills.find(x=>x['Line UID']===o.uid)||{},placement=normalizePlacement(o.placement,o),d=D.designs.find(x=>x.SKU===o.sku)||{},mapped=mappedDesign(d,o,placement);return {...o,placement,variant:f['Variant ID']||'',front:placement==='Back'?'':String(mapped.front||f['Design Front']||'').trim(),back:placement==='Front'?'':String(mapped.back||f['Design Back']||'').trim(),mockup:f['Mockup Link']||mapped.mockup||o.productURL||'',label:f['Label Link']||o.label||'',qty:Number(f.Quantity)||o.qty,notes:f.Notes||'',fulfillStatus:f.Status||'Pending'} }
+function defaultPlacement(o){return /(?:^|_)2M$/i.test(o.sku)||/2M/i.test(o.sku)?'Front+Back':'Front'}
+function normalizePlacement(v,o){return ['Front','Back','Front+Back'].includes(v)?v:defaultPlacement(o)}
+function expectedSides(o){return normalizePlacement(o.placement,o)==='Front+Back'?'2M':'1M'}
+function needsFront(o){return normalizePlacement(o.placement,o)!=='Back'}
+function needsBack(o){return normalizePlacement(o.placement,o)!=='Front'}
+function missing(o){return !o.variant||(needsFront(o)&&!o.front)||(needsBack(o)&&!o.back)}
+function designStatus(o){const parts=[];if(needsFront(o))parts.push(`<span class="${o.front?'green':'orange'}">Front: ${o.front?'OK':'Thiếu'}</span>`);if(needsBack(o))parts.push(`<span class="${o.back?'green':'orange'}">Back: ${o.back?'OK':'Thiếu'}</span>`);parts.push(`<div class="design-status-actions">${link(o.mockup,'Mockup')}<button class="preview-action" type="button" data-preview="${esc(o.uid)}" title="Xem trước thiết kế trên màu áo">◉ Preview</button></div>`);return parts.join(' &nbsp; ')}
+function productCell(o){const parts=o.variation.split(',').map(x=>x.trim()),color=parts[0]||'',size=parts[1]||'';return `<div class="product"><img class="thumb" src="${esc(o.mockup)}" onerror="this.style.visibility='hidden'" alt=""><div class="product-details"><b title="${esc(o.name)}">${esc(o.name)}</b><div class="variation-text"><i class="colored" style="background:${rowColor(color)}"></i><strong>${esc(color)}${color&&size?', ':''}${esc(size)}</strong> <span class="tiny">· SL ${o.qty}</span></div><div class="sku-line" title="${esc(o.sku)}">SKU: ${esc(o.sku)}</div><div class="placement-line"><span>Mặt in</span><select class="placement-select" data-placement="${esc(o.uid)}" aria-label="Mặt in của item ${esc(o.id)}"><option value="Front" ${o.placement==='Front'?'selected':''}>Front</option><option value="Back" ${o.placement==='Back'?'selected':''}>Back</option><option value="Front+Back" ${o.placement==='Front+Back'?'selected':''}>Front + Back</option></select></div></div></div>`}
+
+async function refresh(silent=false){if(busy){queued=true;return}busy=true;if(!silent)status('Đang nhận dữ liệu từ Sheet...');try{const next=await api('getData');D=next;lastSync=Date.now();$('sheetLink').href=next.sheetUrl||'#';$('sheetLink').classList.toggle('hide',!next.sheetUrl);status('Đã kết nối · Đồng bộ hai chiều','ok','Lần cập nhật: '+new Date().toLocaleTimeString('vi-VN')+' · kiểm tra mỗi 30 giây');render();if(!silent)toast('Đã đồng bộ '+new Set(D.orders.map(o=>o.id)).size+' đơn / '+D.orders.length+' items từ Google Sheets')}catch(e){status('Không thể đồng bộ Google Sheets','bad',e.message);if(!silent)toast(e.message,true)}finally{busy=false;if(queued){queued=false;refresh(true)}}}
+async function mutate(name,...args){status('Đang lưu thay đổi vào Google Sheets...');try{const out=await api(name,...args);await refresh(true);toast('Đã lưu thay đổi lên Google Sheets');return out}catch(e){status('Lưu thất bại · Vui lòng kiểm tra','bad',e.message);toast(e.message,true);throw e}}
+function grouped(){
+ const map=new Map();
+ // Google Sheet newest records are appended at the bottom; row is a stable display sort key only.
+ for(const raw of D.orders){
+  const o=merged(raw),key=String(o.id).trim();if(!key)continue;
+  if(!map.has(key))map.set(key,{id:key,lines:[],lastRow:0});
+  const g=map.get(key);g.lines.push(o);g.lastRow=Math.max(g.lastRow,Number(o.row)||0);
+ }
+ return [...map.values()].sort((a,b)=>b.lastRow-a.lastRow||b.id.localeCompare(a.id));
+}
+function groupDone(g){return g.lines.every(o=>o.flag)}
+function groupMissing(g){return g.lines.some(missing)}
+function groupValue(g){return [...g.lines].sort((a,b)=>a.row-b.row)[0]?.price||0} // K repeats order payout; use its first sheet row only.
+function groupProfit(g){
+ // Only show one Profit for the complete order, after all items are fulfilled
+ // and all item FF Prices are strictly positive.
+ if(!g.lines.length||!g.lines.every(o=>o.flag&&o.ffPrice!==null&&Number.isFinite(o.ffPrice)&&o.ffPrice>0))return null;
+ return groupValue(g)-g.lines.reduce((sum,o)=>sum+o.ffPrice,0);
+}
+// Shared order shipping label: prefer the earliest Sheet row with a usable URL.
+function groupLabel(g){return [...g.lines].sort((a,b)=>(Number(a.row)||0)-(Number(b.row)||0)).find(o=>/^https?:\/\//i.test(String(o.label||'').trim()))?.label||''}
+function render(){
+ renderColorConfig();const groups=grouped(),done=groups.filter(groupDone),pending=groups.filter(g=>!groupDone(g));
+ $('total').textContent=groups.length;$('done').textContent=done.length;$('pending').textContent=pending.length;
+ $('payout').textContent=money(groups.reduce((sum,g)=>sum+groupValue(g),0));
+ const lines=groups.flatMap(g=>g.lines);
+ // An order contributes to profit only if all its items are fulfilled and priced (>0).
+ // Deduplicate the order payout, while summing all individual item costs.
+ const eligible=groups.filter(g=>groupProfit(g)!==null);
+ $('profit').textContent=eligible.length?money(eligible.reduce((sum,g)=>sum+groupProfit(g),0)):'—';
+ $('profit').title=`Chỉ tính ${eligible.length} đơn có tất cả items FF = TRUE và FF Price > 0; Payout mỗi Order ID chỉ cộng một lần.`;
+ document.querySelector('[data-view="orders"]').textContent='Đơn hàng ('+groups.length+')';
+ document.querySelector('[data-view="pending"]').textContent='Cần Fulfill ('+pending.length+')';
+ let shops=[...new Set(lines.map(o=>o.shop).filter(Boolean))].sort(),prev=$('shopFilter').value;
+ $('shopFilter').innerHTML='<option value="">Tất cả Shop</option>'+shops.map(x=>'<option value="'+esc(x)+'">Shop '+esc(x)+'</option>').join('');
+ $('shopFilter').value=prev;
+ renderOrders();renderVariants();renderDesigns();renderHistory();
+}
+
+function money(n){return '$'+(Number(n)||0).toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2})}
+function link(url,label){return /^https?:\/\//i.test(url||'')?`<a href="${esc(url)}" target="_blank" rel="noopener noreferrer">${esc(label)}</a>`:'<span class="tiny">—</span>'}
+function items(){
+ const q=$('search').value.toLowerCase().trim(),shop=$('shopFilter').value,side=$('sideFilter').value;
+ return grouped().filter(g=>{
+  if(view==='pending'&&groupDone(g))return false;
+  if(filter==='done'&&!groupDone(g))return false;
+  if(filter==='pending'&&groupDone(g))return false;
+  if(filter==='missing'&&!groupMissing(g))return false;
+  if(shop&&!g.lines.some(o=>o.shop===shop))return false;
+  if(side&&!g.lines.some(o=>expectedSides(o)===side))return false;
+  return !q||g.lines.some(o=>[o.id,o.name,o.sku,o.variation,o.variant,o.shop].join(' ').toLowerCase().includes(q));
+ });
+}
+function rowColor(color){const configured=colorHex(color);if(configured)return configured;
+ const c=color.toLowerCase();return c.includes('black')?'#111':c.includes('white')?'#fff':c.includes('pink')?'#f8cadd':c.includes('sand')?'#ddd2be':c.includes('green')?'#55654b':c.includes('ash')?'#c8c8c8':c.includes('navy')?'#253650':'#c5c9d3';
+}
+function eligibleLines(){return D.orders.filter(o=>!o.flag)}
+function cleanSelection(){const valid=new Set(eligibleLines().map(o=>o.uid));for(const uid of selected)if(!valid.has(uid))selected.delete(uid)}
+function updateSelectionUI(){
+ cleanSelection();
+ const n=selected.size, orderCount=new Set(D.orders.filter(o=>selected.has(o.uid)&&!o.flag).map(o=>o.id)).size,actions=$('exportActions');
+ actions.classList.toggle('hide',n===0);
+ actions.querySelectorAll('[data-export-count]').forEach(el=>el.textContent=String(orderCount));
+ for(const button of actions.querySelectorAll('button'))button.title=`${orderCount} đơn · ${n} items FALSE được chọn`;
+ const pageEligible=items().slice(page*limit,(page+1)*limit).flatMap(g=>g.lines).filter(o=>!o.flag);
+ $('checkAll').checked=pageEligible.length>0&&pageEligible.every(o=>selected.has(o.uid));
+ $('checkAll').indeterminate=pageEligible.some(o=>selected.has(o.uid))&&!$('checkAll').checked;
+ $('checkAll').disabled=pageEligible.length===0;
+ document.querySelectorAll('[data-group-check]').forEach(el=>{const group=grouped().find(g=>g.id===el.dataset.groupCheck);if(!group)return;const eligible=group.lines.filter(o=>!o.flag);el.checked=eligible.length>0&&eligible.every(o=>selected.has(o.uid));el.indeterminate=eligible.some(o=>selected.has(o.uid))&&!el.checked;});
+}
+function renderOrders(){
+ const groups=items(),pages=Math.max(1,Math.ceil(groups.length/limit));page=Math.max(0,Math.min(page,pages-1));
+ const pageGroups=groups.slice(page*limit,(page+1)*limit);
+ $('orderRows').innerHTML=pageGroups.map(g=>{
+  const first=g.lines[0],lines=g.lines,open=expanded.has(g.id),done=groupDone(g),flagged=lines.filter(x=>x.flag).length;
+  // Single-item orders keep the original compact one-row layout.
+  // Every editable control targets the item's own Line UID, never the order group.
+  if(lines.length===1){
+   const o=first, parts=o.variation.split(',').map(x=>x.trim()),color=parts[0]||'',size=parts[1]||'';
+   return `<tr class="single-order-row"><td><input type="checkbox" data-check="${esc(o.uid)}" ${selected.has(o.uid)?'checked':''} ${o.flag?'disabled title="Đơn đã TRUE, không thể chọn để xuất Excel"':''}></td>
+    <td>${esc(o.stt)}</td>
+    <td><b>${esc(o.id)}</b><div class="tiny">${esc(o.dateUS)} → ${esc(o.dateVN)}</div><div class="tiny">Shop <b>${esc(o.shop)}</b></div></td>
+    <td>${productCell(o)}</td>
+    <td><input class="quick" data-quick="${esc(o.uid)}" value="${esc(o.variant)}" placeholder="Nhập Variant ID"></td>
+    <td>${designStatus(o)}</td>
+    <td><b>${money(o.price)}</b><div class="tiny">FF: <input class="cost-input" type="number" min="0" step="0.01" data-ffprice="${esc(o.uid)}" value="${o.ffPrice===null?'':esc(o.ffPrice)}" placeholder="Cost"></div><div class="tiny">Profit: <b>${o.profit===null?'—':money(o.profit)}</b></div><div>${link(o.label,'Label PDF')}</div></td>
+    <td><span class="pill ${o.flag?'':'no'}">${o.flag?'TRUE':'FALSE'}</span></td>
+    <td><button class="btn ${o.flag?'dark':'pink'} sm" data-open="${esc(o.uid)}">Fulfillment</button></td></tr>`;
+  }
+  const firstRow=`<tr class="group-row"><td><input type="checkbox" data-group-check="${esc(g.id)}" ${lines.filter(o=>!o.flag).length&&lines.filter(o=>!o.flag).every(o=>selected.has(o.uid))?'checked':''} ${lines.every(o=>o.flag)?'disabled title="Tất cả items đã TRUE"':''}></td>
+   <td>${esc(first.stt)}</td><td><button class="order-expand" data-expand="${esc(g.id)}" aria-expanded="${open}">${open?'▾':'▸'} <b>${esc(g.id)}</b></button><div class="tiny">${esc(first.dateUS)} → ${esc(first.dateVN)}</div><div class="tiny">Shop <b>${esc(first.shop)}</b></div></td>
+   <td><div class="product"><img class="thumb" src="${esc(first.mockup)}" onerror="this.style.visibility='hidden'" alt=""><div class="product-details"><b class="group-product-name" title="${esc(first.name)}">${esc(first.name)}</b><div class="tiny"><strong class="item-badge">${lines.length} items</strong> · SL ${lines.reduce((n,o)=>n+o.qty,0)}</div></div></div></td>
+   <td><span class="tiny">Mở đơn để sửa riêng ${lines.length} items</span></td>
+   <td><span class="${groupMissing(g)?'orange':'green'}">${groupMissing(g)?'Cần bổ sung':'Đủ Design/Variant'}</span></td>
+   <td><b>${money(groupValue(g))}</b><div class="tiny">Payout / đơn</div><div class="group-profit ${groupProfit(g)===null?'tiny':'green'}">Profit: <b>${groupProfit(g)===null?'—':money(groupProfit(g))}</b></div><div class="group-label">${link(groupLabel(g),'Label PDF')}</div></td>
+   <td><span class="pill ${done?'':'no'}">${done?'TRUE':flagged+'/'+lines.length+' TRUE'}</span></td>
+   <td><button class="btn dark sm" data-expand="${esc(g.id)}">${open?'Thu gọn':'Xem '+lines.length+' items'}</button></td></tr>`;
+  if(!open)return firstRow;
+  const subrows=lines.map((o,i)=>{
+   const parts=o.variation.split(',').map(x=>x.trim()),color=parts[0]||'',size=parts[1]||'';
+   return `<tr class="item-row"><td><input type="checkbox" data-check="${esc(o.uid)}" ${selected.has(o.uid)?'checked':''} ${o.flag?'disabled title="Đơn đã TRUE, không thể chọn để xuất Excel"':''}></td><td class="tiny">↳ ${i+1}/${lines.length}</td><td><span class="tiny">Dòng Sheet #${o.row}</span><div class="tiny">UID: ${esc(o.uid.slice(0,8))}…</div></td>
+    <td>${productCell(o)}</td>
+    <td><input class="quick" data-quick="${esc(o.uid)}" value="${esc(o.variant)}" placeholder="Nhập Variant ID"></td>
+    <td>${designStatus(o)}</td>
+    <td><div class="tiny">FF: <input class="cost-input" type="number" min="0" step="0.01" data-ffprice="${esc(o.uid)}" value="${o.ffPrice===null?'':esc(o.ffPrice)}" placeholder="Cost"></div></td><td><span class="pill ${o.flag?'':'no'}">${o.flag?'TRUE':'FALSE'}</span></td>
+    <td><button class="btn ${o.flag?'dark':'pink'} sm" data-open="${esc(o.uid)}">Fulfillment</button></td></tr>`;
+  }).join('');return firstRow+subrows;
+ }).join('')||'<tr><td colspan="9" class="empty">Không có đơn hàng phù hợp bộ lọc.</td></tr>';
+ $('countLabel').textContent=`${groups.length} đơn hàng · ${groups.reduce((n,g)=>n+g.lines.length,0)} items · hiển thị ${pageGroups.length} đơn`;
+ $('pageLabel').textContent=(page+1)+'/'+pages;$('prev').disabled=page===0;$('next').disabled=page>=pages-1;
+ updateSelectionUI();
+}
+
+function renderColorConfig(){
+ const f=$('colorConfigForm');if(!f || document.activeElement===$('lightColors')||document.activeElement===$('darkColors'))return;
+ const c=configColors();$('lightColors').value=c.light.join('\n');$('darkColors').value=c.dark.join('\n');
+ $('lightCount').textContent=c.light.length+' màu Light';$('darkCount').textContent=c.dark.length+' màu Dark';
+ $('configUpdated').textContent=D.config?.updatedAt?'Cập nhật: '+D.config.updatedAt:'Đang sử dụng cấu hình mặc định';
+ updateTestTone();
+}
+function parseColors(value){return value.split(/[,\n]+/).map(v=>v.trim()).filter(Boolean)}
+function updateTestTone(){const raw=$('testColor')?.value||'';if(!$('testTone'))return;const tone=colorTone(raw),hex=colorHex(raw);$('testTone').textContent=raw.trim()?(tone==='light'?'Light · '+hex: tone==='dark'?'Dark · '+hex:'Không có trong danh sách · Không tự điền Design'):'Nhập màu để kiểm tra nhóm Design.';}
+function renderVariants(){$('variantRows').innerHTML=D.variants.map(v=>`<tr><td>${esc(v.Brand)}</td><td>${esc(v['Product Type'])}</td><td>${esc(v.Color)}</td><td>${esc(v.Size)}</td><td><b>${esc(v['Variant ID'])}</b></td><td>${money(v['Base Cost'])}</td><td><button class="btn sm" data-delete-variant="${esc(v.Key)}">Xóa</button></td></tr>`).join('')||'<tr><td colspan="7" class="empty">Chưa có bảng mã Variant.</td></tr>'}
+function renderDesigns(){$('designRows').innerHTML=D.designs.map(d=>`<tr><td><b class="design-sku" title="${esc(d.SKU)}">${esc(d.SKU)}</b></td><td><span class="design-product-name" title="${esc(d['Product Name'])}">${esc(d['Product Name'])}</span></td><td>${esc(d['Print Sides'])}</td><td>${link(d['Design Front Light'],'Front Light ↗')}</td><td>${link(d['Design Back Light'],'Back Light ↗')}</td><td>${link(d['Design Front Dark'],'Front Dark ↗')}</td><td>${link(d['Design Back Dark'],'Back Dark ↗')}</td><td>${link(d['Mockup Link'],'Mockup ↗')}</td><td><div class="design-row-actions"><button class="btn sm design-edit-btn" type="button" data-edit-design="${esc(d.SKU)}">Sửa</button><button class="btn sm design-delete-btn" type="button" data-delete-design="${esc(d.SKU)}">Xóa</button></div></td></tr>`).join('')||'<tr><td colspan="9" class="empty">Chưa có dữ liệu Design.</td></tr>'}
+function setDesignEditMode(sku=''){const form=$('designForm'),isEdit=!!sku;form.dataset.editSku=sku;form.elements.namedItem('SKU').readOnly=isEdit;form.elements.namedItem('SKU').classList.toggle('readonly',isEdit);$('designSaveText').textContent=isEdit?'Lưu cập nhật':'Lưu Design';$('designSave').querySelector('.save-icon').textContent=isEdit?'✓':'＋';$('designCancel').classList.toggle('hide',!isEdit);$('designEditingNote').classList.toggle('hide',!isEdit)}
+function startDesignEdit(sku){const d=D.designs.find(x=>x.SKU===sku);if(!d)return toast('Không tìm thấy SKU cần chỉnh sửa.',true);const form=$('designForm');form.reset();for(const name of ['SKU','Product Name','Print Sides','Design Front Light','Design Back Light','Design Front Dark','Design Back Dark','Mockup Link']){const el=form.elements.namedItem(name);if(el)el.value=d[name]??''}setDesignEditMode(sku);form.scrollIntoView({behavior:'smooth',block:'center'});form.elements.namedItem('Product Name').focus({preventScroll:true})}
+function cancelDesignEdit(){const form=$('designForm');form.reset();setDesignEditMode()}
+function renderHistory(){$('historyRows').innerHTML=D.exports.length?`<div class="tablewrap"><table class="simpletable"><thead><tr><th>Ngày giờ</th><th>Tên file</th><th>Số đơn</th><th>Người tạo</th></tr></thead><tbody>${D.exports.map(x=>`<tr><td>${esc(x['Created At'])}</td><td>${esc(x.Filename)}</td><td>${esc(x['Order Count'])}</td><td>${esc(x['Created By'])}</td></tr>`).join('')}</tbody></table></div>`:'<div class="empty">Chưa có lịch sử xuất file Excel.</div>'}
+function showView(v){view=v;document.querySelectorAll('#nav button').forEach(b=>b.classList.toggle('active',b.dataset.view===v));$('orderPage').classList.toggle('hide',!['orders','pending'].includes(v));$('variantPage').classList.toggle('hide',v!=='variants');$('designPage').classList.toggle('hide',v!=='designs');$('historyPage').classList.toggle('hide',v!=='history');$('configPage').classList.toggle('hide',v!=='config');if(v==='config')renderColorConfig();page=0;if(['orders','pending'].includes(v))renderOrders()}
+function openDrawer(uid){drawer=D.orders.find(o=>o.uid===uid);if(!drawer)return;const o=merged(drawer),form=$('fulfillForm');$('drawerTitle').textContent='#'+o.id;$('drawerSummary').textContent=o.name+' · '+o.variation+' · '+o.sku;for(const [k,v] of Object.entries({'Print Placement':o.placement,'Variant ID':o.variant,Status:o.fulfillStatus,Quantity:o.qty,'Mockup Link':o.mockup,'Design Front':o.front,'Design Back':o.back,'Label Link':o.label,'FF Price':o.ffPrice??'',Notes:o.notes})){if(form.elements.namedItem(k))form.elements.namedItem(k).value=v||''}$('markAsDone').checked=!!o.flag;mapDrawerDesignFromLibrary();$('drawerShade').classList.add('show')}
+function closeDrawer(){$('drawerShade').classList.remove('show');drawer=null}
+function updateDrawerPlacementUI(){
+ const form=$('fulfillForm'),placement=form.elements.namedItem('Print Placement')?.value||'Front';
+ const frontWrap=$('drawerFrontWrap'),backWrap=$('drawerBackWrap');
+ const tone=drawer?colorTone(orderColor(drawer)):'';
+ const suffix=tone==='light'?' Light':tone==='dark'?' Dark':'';
+ $('drawerFrontLabel').textContent='Design Front'+suffix+' URL';
+ $('drawerBackLabel').textContent='Design Back'+suffix+' URL';
+ if(frontWrap)frontWrap.style.display=placement==='Back'?'none':'';
+ if(backWrap)backWrap.style.display=placement==='Front'?'none':'';
+}
+function mapDrawerDesignFromLibrary(){
+ if(!drawer)return;
+ const f=$('fulfillForm'),placement=f.elements.namedItem('Print Placement').value;
+ const library=D.designs.find(d=>d.SKU===drawer.sku);
+ const mapped=library?mappedDesign(library,drawer,placement):{front:'',back:''};
+ f.elements.namedItem('Design Front').value=mapped.front||'';
+ f.elements.namedItem('Design Back').value=mapped.back||'';
+ updateDrawerPlacementUI();
+}
+async function saveDrawer(){if(!drawer)return;const form=$('fulfillForm');if(!form.reportValidity())return;const obj=Object.fromEntries(new FormData(form).entries());let checked=$('markAsDone').checked;if(obj['Print Placement']==='Front')obj['Design Back']='';if(obj['Print Placement']==='Back')obj['Design Front']='';if(checked&&(!obj['Variant ID']||(obj['Print Placement']!=='Back'&&!obj['Design Front'])||(obj['Print Placement']!=='Front'&&!obj['Design Back'])||!obj['Label Link']))return toast('Không thể đặt TRUE: thiếu Variant ID, Design hoặc Label PDF.',true);const save=$('saveFulfill');save.disabled=true;try{await mutate('saveFulfillment',{uid:drawer.uid,orderId:drawer.id,...obj});let changes={};if(Number(obj.Quantity)!==drawer.qty)changes.qty=Number(obj.Quantity);if(obj['Label Link']!==drawer.label)changes.label=obj['Label Link'];if(checked!==drawer.flag)changes.flag=checked;if(String(obj['FF Price']).trim()!==String(drawer.ffPrice??''))changes.ffPrice=obj['FF Price'];if(Object.keys(changes).length)await mutate('saveOrderFields',{uid:drawer.uid,orderId:drawer.id,changes});closeDrawer()}catch(e){}finally{save.disabled=false}}
+async function autoMap(){let toSave=[];for(const o0 of D.orders){let o=merged(o0),parts=o.variation.split(',').map(s=>s.trim()),color=parts[0]||'',size=parts[1]||'',v=D.variants.find(x=>x.Color?.toLowerCase()===color.toLowerCase()&&x.Size?.toLowerCase()===size.toLowerCase()&&(o.name||'').toLowerCase().includes((x['Product Type']||'').toLowerCase()));const d=D.designs.find(x=>x.SKU===o.sku)||{};const mapped=mappedDesign(d,o,o.placement);let p={'Print Placement':o.placement,'Variant ID':o.variant||(v&&v['Variant ID'])||'','Design Front':o.front||(mapped.front)||'','Design Back':o.back||(mapped.back)||'','Mockup Link':o.mockup||(mapped.mockup)||''};if(p['Print Placement']==='Front')p['Design Back']='';if(p['Print Placement']==='Back')p['Design Front']='';if(p['Variant ID']!==o.variant||p['Design Front']!==o.front||p['Design Back']!==o.back||p['Mockup Link']!==o.mockup)toSave.push({uid:o.uid,orderId:o.id,...p,Quantity:o.qty,'Label Link':o.label,Status:o.fulfillStatus,Notes:o.notes})}if(!toSave.length)return toast('Không có mã Variant/Design mới phù hợp; không tự tạo dữ liệu giả.');if(!confirm('Áp dụng và lưu '+toSave.length+' dòng lên Google Sheets?'))return;let ok=0;for(const p of toSave){try{await api('saveFulfillment',p);ok++}catch(e){toast('Có lỗi khi tự điền: '+e.message,true);break}}await refresh(true);toast('Đã tự điền '+ok+'/'+toSave.length+' dòng')}
+async function bulk(flag){let subset=D.orders.filter(o=>selected.has(o.uid));if(!subset.length)return toast('Chọn ít nhất một dòng đơn hàng.',true);if(flag){let bad=subset.map(merged).filter(o=>missing(o)||!o.label);if(bad.length)return toast(bad.length+' đơn còn thiếu Variant/Design/Label, không thể đặt TRUE.',true)}if(!confirm(`Cập nhật cột N = ${flag} cho ${subset.length} đơn?`))return;try{await mutate('batchSetFlag',subset.map(o=>({uid:o.uid,orderId:o.id})),flag);selected.clear();renderOrders()}catch(e){}}
+// FS format mirrors the supplied A:Z header layout. Data starts strictly on row 4.
+const FS_HEADINGS=['Order ID','Shipping method',"Customer’s name",'Email','Phone','Country','State','Address line 1','Address line 2','City','Zip','Link Label','Quantity','Variant ID','Design Front','Design Back','Design Left Hand','Design Right Hand','Design Neck','Design Hood','Design Pocket','Special Print','Mockup Front','Mockup Back','Mockup Left Hand','Mockup Right Hand'];
+const FS_DEFAULT_SHIPPING_METHOD=1;
+const FS_DEFAULT_CUSTOMER_NAME='AA';
+// Export snapshot: never associate an item with an Order ID by its checkbox
+// position or visual row index. Each selected Line UID resolves to exactly one
+// Orders record, and the Order ID always comes from that record.
+function selectedForExport(){
+ cleanSelection();
+ const byUid=new Map();
+ for(const item of D.orders){
+   const uid=String(item.uid||'').trim();
+   if(!uid)continue;
+   if(byUid.has(uid))throw new Error('Line UID bị trùng trong Orders: '+uid);
+   byUid.set(uid,item);
+ }
+ const selectedRecords=[];
+ for(const uid of selected){
+   const raw=byUid.get(uid);
+   if(!raw||raw.flag)continue;
+   const orderId=String(raw.id||'').trim();
+   if(!orderId)throw new Error('Item '+uid+' chưa có Order ID. Không thể xuất FS.');
+   const item=merged(raw);
+   item.id=orderId;
+   item.uid=uid;
+   item.row=Number(raw.row)||0;
+   selectedRecords.push(item);
+ }
+ // Match website newest-order-first order, keep all items of one Order ID
+ // adjacent, and preserve ascending sheet row within that order.
+ const groups=new Map();
+ for(const item of selectedRecords){
+   if(!groups.has(item.id))groups.set(item.id,{id:item.id,items:[],latestRow:0});
+   const group=groups.get(item.id);
+   group.items.push(item);
+   group.latestRow=Math.max(group.latestRow,item.row);
+ }
+ return [...groups.values()]
+   .sort((a,b)=>b.latestRow-a.latestRow||b.id.localeCompare(a.id))
+   .flatMap(g=>g.items.sort((a,b)=>a.row-b.row||a.uid.localeCompare(b.uid)));
+}
+function fsExportRows(lines){
+ const firstByOrder=new Set();
+ const allLinesByOrder=new Map();
+ // Resolve common order-level data from the full Orders dataset,
+ // regardless of which individual items were checked.
+ for(const raw of D.orders){
+   const id=String(raw.id||'').trim();
+   if(!allLinesByOrder.has(id))allLinesByOrder.set(id,[]);
+   allLinesByOrder.get(id).push(raw);
+ }
+ const rows=[];
+ for(const item of lines){
+   const id=String(item.id||'').trim();
+   if(!id||!item.uid)throw new Error('Thiếu Order ID hoặc Line UID khi xuất FS.');
+   if(String(D.orders.find(x=>x.uid===item.uid)?.id||'').trim()!==id){
+     throw new Error('Order ID không khớp Line UID '+item.uid+'. Vui lòng đồng bộ lại.');
+   }
+   const isFirstSelected=!firstByOrder.has(id);
+   firstByOrder.add(id);
+   const related=(allLinesByOrder.get(id)||[]).slice().sort((a,b)=>(Number(a.row)||0)-(Number(b.row)||0));
+   const orderLabel=related.map(x=>String(x.label||'').trim()).find(v=>/^https?:\/\//i.test(v))||String(item.label||'').trim();
+   const placement=item.placement||'Front';
+   const front=placement==='Front'||placement==='Front+Back';
+   const back=placement==='Back'||placement==='Front+Back';
+   const qty=Number(item.qty);
+   if(!Number.isSafeInteger(qty)||qty<1)throw new Error('Quantity không hợp lệ ở Order '+id+' (Line UID '+item.uid+').');
+   const values=Array(26).fill('');
+   values[0]=id; // Always repeat SAME Order ID for each line item.
+   values[1]=isFirstSelected?FS_DEFAULT_SHIPPING_METHOD:'';
+   values[2]=isFirstSelected?FS_DEFAULT_CUSTOMER_NAME:'';
+   values[11]=isFirstSelected?orderLabel:'';
+   values[12]=qty;
+   values[13]=String(item.variant||'').trim();
+   values[14]=front?String(item.front||'').trim():'';
+   values[15]=back?String(item.back||'').trim():'';
+   values[22]=front?String(item.mockup||'').trim():'';
+   values[23]=back?String(item.mockup||'').trim():'';
+   rows.push(values);
+ }
+ return rows;
+}
+function downloadBlob(data,filename,type){const blob=new Blob([data],{type});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download=filename;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),5000)}
+async function recordExportSafely(filename,lines){try{await api('recordExport',{filename,count:new Set(lines.map(x=>x.id)).size});await refresh(true)}catch(err){toast('File đã xuất, nhưng không ghi được lịch sử: '+err.message,true)}}
+// Export FS by modifying ONLY the worksheet cells inside a clone of the uploaded
+// Excel template. All other workbook parts (styles, drawing, merges, widths,
+// validation, notes) remain untouched in the XLSX ZIP container.
+const FS_TEMPLATE_URL='/templates/tiktok-fs.xlsx';
+const FS_SHEET_XML='xl/worksheets/sheet1.xml';
+function fsColumnNumber(a){let n=0;for(const c of a)n=n*26+c.charCodeAt(0)-64;return n}
+function fsPutCell(doc,rowEl,col,rowNo,value){
+ const ns='http://schemas.openxmlformats.org/spreadsheetml/2006/main';
+ const address=col+rowNo;
+ let node=Array.from(rowEl.children).find(x=>x.localName==='c'&&x.getAttribute('r')===address);
+ if(!node){node=doc.createElementNS(ns,'c');node.setAttribute('r',address);
+   const position=fsColumnNumber(col);
+   const before=Array.from(rowEl.children).find(x=>x.localName==='c'&&fsColumnNumber((x.getAttribute('r')||'').match(/^[A-Z]+/)?.[0]||'')>position);
+   if(before)rowEl.insertBefore(node,before);else rowEl.appendChild(node);
+ }
+ while(node.firstChild)node.removeChild(node.firstChild);
+ if(typeof value==='number'){
+   node.removeAttribute('t');const v=doc.createElementNS(ns,'v');v.textContent=String(value);node.appendChild(v);
+ }else{
+   node.setAttribute('t','inlineStr');const is=doc.createElementNS(ns,'is'),t=doc.createElementNS(ns,'t');
+   t.textContent=String(value);t.setAttribute('xml:space','preserve');is.appendChild(t);node.appendChild(is);
+ }
+}
+async function buildFSFromTemplate(lines){
+ if(!window.JSZip)throw new Error('Không tải được JSZip. Hãy kiểm tra mạng/CDN rồi thử lại.');
+ const response=await fetch(FS_TEMPLATE_URL,{cache:'no-store'});
+ if(!response.ok)throw new Error('Không tìm thấy mẫu tiktok-fs.xlsx trong thư mục templates.');
+ const zip=await JSZip.loadAsync(await response.arrayBuffer());
+ const worksheetFile=zip.file(FS_SHEET_XML);
+ if(!worksheetFile)throw new Error('File mẫu thiếu xl/worksheets/sheet1.xml.');
+ const xml=await worksheetFile.async('string');
+ const doc=new DOMParser().parseFromString(xml,'application/xml');
+ if(doc.querySelector('parsererror'))throw new Error('Không đọc được XML của mẫu FS.');
+ const ns='http://schemas.openxmlformats.org/spreadsheetml/2006/main';
+ const sheetData=doc.getElementsByTagNameNS(ns,'sheetData')[0];
+ if(!sheetData)throw new Error('Mẫu FS không có vùng sheetData.');
+ const rows=Array.from(sheetData.children).filter(x=>x.localName==='row');
+ const rowIndex=new Map(rows.map(x=>[Number(x.getAttribute('r')),x]));
+ const cells=fsExportRows(lines);
+ if(cells.length!==lines.length)throw new Error('Số dòng xuất không khớp số item đã chọn.');
+ const letters=['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'];
+ cells.forEach((values,i)=>{
+   const rowNo=i+4;
+   let row=rowIndex.get(rowNo);
+   if(!row){row=doc.createElementNS(ns,'row');row.setAttribute('r',String(rowNo));
+     const before=Array.from(sheetData.children).find(x=>x.localName==='row'&&Number(x.getAttribute('r'))>rowNo);
+     if(before)sheetData.insertBefore(row,before);else sheetData.appendChild(row);
+     rowIndex.set(rowNo,row);
+   }
+   values.forEach((value,j)=>fsPutCell(doc,row,letters[j],rowNo,value==null?'':value));
+ });
+ // Template is a reusable master: clear stale data rows (if any) after the export.
+ for(const [number,row] of rowIndex){
+   if(number>=4+cells.length){
+     for(const cellEl of Array.from(row.children).filter(x=>x.localName==='c')){
+       const addr=cellEl.getAttribute('r')||'';
+       const colMatch=addr.match(/^[A-Z]+/);
+       if(colMatch&&fsColumnNumber(colMatch[0])<=26){
+         while(cellEl.firstChild)cellEl.removeChild(cellEl.firstChild);
+         cellEl.setAttribute('t','inlineStr');
+       }
+     }
+   }
+ }
+  zip.file(FS_SHEET_XML,new XMLSerializer().serializeToString(doc));
+ return zip.generateAsync({type:'blob',compression:'DEFLATE',compressionOptions:{level:6}});
+}
+async function exportFS(){
+ const lines=selectedForExport();
+ if(!lines.length)return toast('Chọn ít nhất một item FF = FALSE.',true);
+ const btn=$('exportFS');btn.disabled=true;
+ try{
+   const blob=await buildFSFromTemplate(lines);
+   const filename='FS_Fulfillment_'+new Date().toISOString().slice(0,10)+'.xlsx';
+   downloadBlob(blob,filename,'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+   await recordExportSafely(filename,lines);
+   selected.clear();renderOrders();
+   toast('Đã xuất '+lines.length+' item vào mẫu FS gốc, bắt đầu từ dòng 4.');
+ }catch(err){toast('Xuất Excel FS thất bại: '+err.message,true)}
+ finally{btn.disabled=false}
+}
+// Pressify template: kept with the website, so localhost and Vercel export identically.
+const PRESSIFY_TEMPLATE_URL='./templates/tiktok-presstify.csv';
+const PRESSIFY_HEADERS=['Order ID','Order Status','Product Name','Variant ID','Quantity','Mockup Front','Mockup Back','Front Design','Back Design','Sleeve Left Design','Sleeve Right Design','Address Line 1','Address Line 2','Firstname','Lastname','Phone','Country','State','City','Zipcode','Shipping Label','Shipping Method'];
+function csvEscape(value){const s=String(value??'');return /[",\r\n]/.test(s)?'"'+s.replace(/"/g,'""')+'"':s}
+function parseCsvFirstRecord(source){
+ const s=String(source||'').replace(/^\uFEFF/,'');const out=[];let field='',quoted=false;
+ for(let i=0;i<s.length;i++){
+   const ch=s[i];
+   if(ch==='"'){
+     if(quoted&&s[i+1]==='"'){field+='"';i++}else quoted=!quoted;
+   }else if(ch===','&&!quoted){out.push(field);field=''}
+   else if((ch==='\n'||ch==='\r')&&!quoted){out.push(field);return out}
+   else field+=ch;
+ }
+ out.push(field);return out;
+}
+function pressifyExportRows(lines){
+ const relatedByOrder=new Map();
+ for(const raw of D.orders){
+   const id=String(raw.id||'').trim();
+   if(!relatedByOrder.has(id))relatedByOrder.set(id,[]);
+   relatedByOrder.get(id).push(raw);
+ }
+ return lines.map(item=>{
+   const id=String(item.id||'').trim();
+   const raw=D.orders.find(x=>x.uid===item.uid);
+   if(!id||!item.uid||!raw||String(raw.id||'').trim()!==id)throw new Error('Order ID / Line UID không khớp khi xuất Pressify. Hãy đồng bộ lại.');
+   const qty=Number(item.qty);
+   if(!Number.isSafeInteger(qty)||qty<1)throw new Error('Quantity không hợp lệ: '+id);
+   const print=normalizePlacement(item.placement,item);
+   const front=print==='Front'||print==='Front+Back';
+   const back=print==='Back'||print==='Front+Back';
+   const related=(relatedByOrder.get(id)||[]).slice().sort((a,b)=>(Number(a.row)||0)-(Number(b.row)||0));
+   const label=related.map(r=>String(r.label||'').trim()).find(v=>/^https?:\/\//i.test(v))||String(item.label||'').trim();
+   const values=Array(PRESSIFY_HEADERS.length).fill('');
+   values[0]=id;
+   values[1]='new_order';
+   values[2]=String(item.name||'').trim();
+   values[3]=String(item.variant||'').trim();
+   values[4]=qty;
+   values[5]=front?String(item.mockup||'').trim():'';
+   values[6]=back?String(item.mockup||'').trim():'';
+   values[7]=front?String(item.front||'').trim():'';
+   values[8]=back?String(item.back||'').trim():'';
+   // J:K Sleeve Design, L:T address details deliberately blank (not stored in Orders).
+   values[20]=label;
+   values[21]='standard';
+   return values;
+ });
+}
+async function exportPressify(){
+ const lines=selectedForExport();
+ if(!lines.length)return toast('Chọn ít nhất một item FF = FALSE.',true);
+ const btn=$('exportPressify');btn.disabled=true;
+ try{
+   const response=await fetch(PRESSIFY_TEMPLATE_URL,{cache:'no-store'});
+   if(!response.ok)throw new Error('Không tìm thấy mẫu templates/tiktok-presstify.csv');
+   const templateHeaders=parseCsvFirstRecord(await response.text());
+   if(templateHeaders.length!==PRESSIFY_HEADERS.length||PRESSIFY_HEADERS.some((h,i)=>h!==templateHeaders[i]))throw new Error('Header mẫu Pressify đã thay đổi. Kiểm tra file mẫu trước khi xuất.');
+   const rows=pressifyExportRows(lines);
+   const csv='\uFEFF'+[templateHeaders,...rows].map(row=>row.map(csvEscape).join(',')).join('\r\n')+'\r\n';
+   const filename='Pressify_Fulfillment_'+new Date().toISOString().slice(0,10)+'.csv';
+   downloadBlob(csv,filename,'text/csv;charset=utf-8');
+   await recordExportSafely(filename,lines);
+   selected.clear();renderOrders();
+   toast('Đã xuất '+lines.length+' item ra CSV Pressify theo đúng mẫu 22 cột.');
+ }catch(err){toast('Xuất Pressify thất bại: '+err.message,true)}
+ finally{btn.disabled=false}
+}
+
+const cfg=window.TikSheets.getConfig();$('accessKey').value='';$('loginGoogle').onclick=async()=>{try{window.TikSheets.configure({accessKey:$('accessKey').value});await window.TikSheets.login();$('accessKey').value='';await refresh()}catch(e){toast(e.message,true);status('Không thể kết nối','bad',e.message)}};
+let previewItem=null;
+function trimPreviewImage(img){
+  if(!img || img.dataset.trimmed==='1' || !img.naturalWidth || !img.naturalHeight) return;
+  try{
+    const c=document.createElement('canvas'),ctx=c.getContext('2d',{willReadFrequently:true});
+    c.width=img.naturalWidth; c.height=img.naturalHeight;
+    ctx.drawImage(img,0,0);
+    const data=ctx.getImageData(0,0,c.width,c.height).data;
+    let minX=c.width,minY=c.height,maxX=-1,maxY=-1;
+    for(let y=0;y<c.height;y++){
+      for(let x=0;x<c.width;x++){
+        const a=data[(y*c.width+x)*4+3];
+        if(a>8){ if(x<minX)minX=x; if(x>maxX)maxX=x; if(y<minY)minY=y; if(y>maxY)maxY=y; }
+      }
+    }
+    if(maxX<0||maxY<0){img.dataset.trimmed='1'; return;}
+    const pad=12,w=Math.max(1,Math.min(c.width,maxX-minX+1+pad*2)),h=Math.max(1,Math.min(c.height,maxY-minY+1+pad*2));
+    const sx=Math.max(0,minX-pad), sy=Math.max(0,minY-pad);
+    const out=document.createElement('canvas'),octx=out.getContext('2d');
+    out.width=w; out.height=h;
+    octx.drawImage(c,sx,sy,Math.min(w,c.width-sx),Math.min(h,c.height-sy),0,0,Math.min(w,c.width-sx),Math.min(h,c.height-sy));
+    img.dataset.trimmed='1';
+    img.src=out.toDataURL('image/png');
+  }catch(err){ img.dataset.trimmed='1'; }
+}
+function onPreviewArtLoad(img){ trimPreviewImage(img); img.classList.remove('is-hidden'); }
+$('previewCanvas').addEventListener('load',event=>{const img=event.target;if(img instanceof HTMLImageElement&&img.classList.contains('preview-art'))onPreviewArtLoad(img)},true);
+function drawPreviewFace(o,side,hex){
+  const url=side==='Back'?o.back:o.front;
+  const safeHex=/^#[a-f0-9]{3}(?:[a-f0-9]{3})?$/i.test(hex)?hex:'#d1d5db';
+  const hasURL=/^https?:\/\//i.test(url||'');
+  return `<div class="preview-face ${side==='Front'?'is-front':'is-back'}" style="background:${safeHex}"><div class="preview-face-title">${side}</div><div class="preview-shirt">${hasURL?`<img class="preview-art is-hidden" src="${esc(url)}" alt="Design ${side}"  onerror="this.style.display='none';this.closest('.preview-face').querySelector('.preview-missing').textContent='Không tải được ảnh Design ${side}';this.closest('.preview-face').querySelector('.preview-missing').classList.remove('hide')">`:''}</div><div class="preview-missing ${hasURL?'hide':''}">${hasURL?'':'Thiếu Design '+side}</div><div style="text-align:center"><span class="preview-chip"><i style="background:${safeHex}"></i>${esc(orderColor(o))} · ${esc(hex||'Chưa có HEX')}</span></div></div>`
+}
+function previewSideRender(){if(!previewItem)return;const o=previewItem,hex=colorHex(orderColor(o));const sides=o.placement==='Front+Back'?['Front','Back']:[o.placement==='Back'?'Back':'Front'];const canvas=$('previewCanvas');canvas.classList.toggle('is-double',sides.length===2);canvas.innerHTML=sides.map(side=>drawPreviewFace(o,side,hex)).join('');$('previewLink').innerHTML=sides.map(side=>`<div class="preview-link-line">${esc(side)}: ${link(side==='Back'?o.back:o.front,'Mở Design ↗')}</div>`).join('');$('previewImageWarning').style.display=hex?'none':'block';$('previewImageWarning').textContent=hex?'':'Màu chưa có mã HEX. Hãy thêm Tên màu-#HEX trong Cấu hình.';
+ const mockup=o.mockup||''; const mock=$('previewMockupImage'); const empty=$('previewMockupEmpty');
+ if(/^https?:\/\//i.test(mockup)){ mock.src=mockup; mock.style.display='block'; empty.style.display='none'; } else { mock.removeAttribute('src'); mock.style.display='none'; empty.style.display='block'; }
+}
+function openPreview(uid){const raw=D.orders.find(x=>x.uid===uid);if(!raw)return;previewItem=merged(raw);$('previewSubtitle').textContent=orderColor(previewItem)+' · '+previewItem.id;$('previewShade').classList.add('show');previewSideRender()}
+function closePreview(){$('previewShade').classList.remove('show');previewItem=null;$('previewCanvas').innerHTML='';$('previewMockupImage').removeAttribute('src');$('previewMockupImage').style.display='none';$('previewMockupEmpty').style.display='none';}
+$('closePreview').onclick=closePreview;$('previewShade').addEventListener('click',e=>{if(e.target===$('previewShade'))closePreview()});document.addEventListener('keydown',e=>{if(e.key==='Escape'&&$('previewShade').classList.contains('show'))closePreview()});
+$('nav').addEventListener('click',e=>{let b=e.target.closest('[data-view]');if(b)showView(b.dataset.view)});$('reload').onclick=()=>refresh();$('exportFS').onclick=exportFS;$('exportPressify').onclick=exportPressify;$('prev').onclick=()=>{page--;renderOrders()};$('next').onclick=()=>{page++;renderOrders()};['search','shopFilter','sideFilter'].forEach(x=>$(x).addEventListener(x==='search'?'input':'change',()=>{page=0;renderOrders()}));$('filterTabs').onclick=e=>{let b=e.target.closest('[data-filter]');if(!b)return;filter=b.dataset.filter;document.querySelectorAll('#filterTabs button').forEach(x=>x.classList.toggle('active',x===b));page=0;renderOrders()};$('checkAll').onchange=e=>{items().slice(page*limit,(page+1)*limit).flatMap(g=>g.lines).filter(o=>!o.flag).forEach(o=>e.target.checked?selected.add(o.uid):selected.delete(o.uid));renderOrders()};$('orderRows').addEventListener('change',async e=>{let el=e.target;if(el.dataset.groupCheck){const g=grouped().find(g=>g.id===el.dataset.groupCheck);if(g)g.lines.filter(o=>!o.flag).forEach(o=>el.checked?selected.add(o.uid):selected.delete(o.uid));renderOrders();return}if(el.dataset.check){const o=D.orders.find(x=>x.uid===el.dataset.check);if(o&&!o.flag){el.checked?selected.add(el.dataset.check):selected.delete(el.dataset.check)}updateSelectionUI();return}if(el.dataset.placement){const raw=D.orders.find(x=>x.uid===el.dataset.placement);if(!raw)return;const m=merged(raw),value=el.value;if(!['Front','Back','Front+Back'].includes(value))return;if(value===m.placement)return;el.disabled=true;try{
+ const library=D.designs.find(d=>d.SKU===raw.sku)||{};
+ const mapped=mappedDesign(library,raw,value);
+ const payload={uid:raw.uid,orderId:raw.id,'Print Placement':value,'Variant ID':m.variant,
+ 'Design Front':mapped.tone?mapped.front:(value==='Back'?'':m.front),'Design Back':mapped.tone?mapped.back:(value==='Front'?'':m.back),'Mockup Link':m.mockup,
+ Quantity:m.qty,'Label Link':m.label,Status:m.fulfillStatus,Notes:m.notes};
+ await mutate('saveFulfillment',payload);
+ toast(mapped.tone?`Đã chọn ${value} · ${mapped.tone.toUpperCase()} · Lưu Design tự động`:'Đã lưu mặt in. Màu chưa cấu hình nên chưa tự gán Design.',!mapped.tone);
+ }catch(err){el.value=m.placement}finally{el.disabled=false}return;}if(el.dataset.ffprice){const raw=D.orders.find(x=>x.uid===el.dataset.ffprice);if(!raw)return;const value=el.value.trim();if(value!==''&&(!Number.isFinite(Number(value))||Number(value)<0)){toast('FF Price phải là số không âm',true);el.value=raw.ffPrice??'';return}if(value===String(raw.ffPrice??''))return;el.disabled=true;try{await mutate('saveOrderFields',{uid:raw.uid,orderId:raw.id,changes:{ffPrice:value}})}catch(err){el.value=raw.ffPrice??''}finally{el.disabled=false}return;}if(el.dataset.quick){let o=D.orders.find(x=>x.uid===el.dataset.quick);if(!o)return;let m=merged(o);if(m.variant===el.value.trim())return;try{await mutate('saveFulfillment',{uid:o.uid,orderId:o.id,'Variant ID':el.value.trim(),'Print Placement':m.placement,'Design Front':m.front,'Design Back':m.back,'Mockup Link':m.mockup,Quantity:m.qty,'Label Link':m.label,Status:m.fulfillStatus,Notes:m.notes})}catch(e){}}});$('orderRows').onclick=e=>{let toggle=e.target.closest('[data-expand]');if(toggle){const id=toggle.dataset.expand;expanded.has(id)?expanded.delete(id):expanded.add(id);renderOrders();return}let pv=e.target.closest('[data-preview]');if(pv){openPreview(pv.dataset.preview);return}let b=e.target.closest('[data-open]');if(b)openDrawer(b.dataset.open)};$('bulkDone').onclick=()=>bulk(true);$('bulkPending').onclick=()=>bulk(false);
+$('drawerPlacement').onchange=()=>mapDrawerDesignFromLibrary();
+$('colorConfigForm').onsubmit=async e=>{e.preventDefault();const light=parseColors($('lightColors').value),dark=parseColors($('darkColors').value);const seen=new Set();for(const value of [...light,...dark]){const entry=parseColorEntry(value),k=normText(entry.name);if(!entry.name||!entry.hex)return toast('Mỗi màu cần mã HEX: Tên màu-#RRGGBB. Sai tại: '+value,true);if(seen.has(k))return toast('Màu bị trùng giữa các nhóm hoặc trong cùng nhóm: '+value,true);seen.add(k)}if(!light.length||!dark.length)return toast('Cả Light và Dark đều phải có màu.',true);const button=$('saveColorConfig');button.disabled=true;try{await mutate('saveColorConfig',{light,dark});renderColorConfig()}catch(e){}finally{button.disabled=false}};
+$('resetColorConfig').onclick=()=>{$('lightColors').value=DEFAULT_COLORS.light.join('\n');$('darkColors').value=DEFAULT_COLORS.dark.join('\n');toast('Đã nhập lại màu mặc định. Bấm Lưu cấu hình để ghi lên Sheet.')};
+$('testColor').addEventListener('input',updateTestTone);
+$('variantForm').onsubmit=async e=>{e.preventDefault();const f=e.target,p=Object.fromEntries(new FormData(f).entries());try{await mutate('saveVariant',p);f.reset()}catch(err){}};$('designForm').onsubmit=async e=>{e.preventDefault();const f=e.target,p=Object.fromEntries(new FormData(f).entries());if(f.dataset.editSku&&p.SKU!==f.dataset.editSku)return toast('Không thể thay đổi SKU khi đang sửa.',true);$('designSave').disabled=true;try{await mutate('saveDesign',p);cancelDesignEdit()}catch(err){}finally{$('designSave').disabled=false}};$('designCancel').onclick=cancelDesignEdit;$('variantRows').onclick=async e=>{let b=e.target.closest('[data-delete-variant]');if(b&&confirm('Xóa mã Variant này?'))try{await mutate('deleteRecord','variant',b.dataset.deleteVariant)}catch(err){}};$('designRows').onclick=async e=>{const edit=e.target.closest('[data-edit-design]');if(edit){startDesignEdit(edit.dataset.editDesign);return}const b=e.target.closest('[data-delete-design]');if(b&&confirm('Xóa thông tin Design này?'))try{await mutate('deleteRecord','design',b.dataset.deleteDesign);if($('designForm').dataset.editSku===b.dataset.deleteDesign)cancelDesignEdit()}catch(err){}};
+$('closeDrawer').onclick=$('cancelDrawer').onclick=closeDrawer;$('drawerShade').onclick=e=>{if(e.target===$('drawerShade'))closeDrawer()};$('saveFulfill').onclick=saveDrawer;document.addEventListener('keydown',e=>{if(e.key==='Escape')closeDrawer()});if(cfg.localMode){$('accessKey').classList.add('hide');$('loginGoogle').classList.add('hide');window.TikSheets.login().then(()=>refresh()).catch(e=>status('Kết nối localhost thất bại','bad',e.message));}else if(cfg.hasAccessKey){refresh();}else status('Chưa có mã truy cập','bad','Nhập mã truy cập quản trị khi website đã deploy lên Vercel');setInterval(()=>{if(!drawer&&!document.hidden)refresh(true)},30000);
+})();
+</script></body></html>
